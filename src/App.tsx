@@ -1,11 +1,18 @@
 // import './hover.css'
 
-import Navbar from "./components/Navbar";
+import { useState } from "react";
+import Navbar from "./components/layouts/Nav";
 
 
 export default function App() {
+  const [visible, setVisible] = useState(false)
   return <>
     <Navbar />
+    <div className="text-right">
+      <button onClick={() => setVisible(prev => !prev)}>click me</button>
+      <div className={`bg-amber-700 p-5 transition-opacity ${visible ? 'visible opacity-100' : 'invisible opacity-0'}`}></div>
+    </div>
+
   </>
 }
 

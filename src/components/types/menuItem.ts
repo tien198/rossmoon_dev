@@ -1,5 +1,5 @@
 export type MenuItem = {
-    display: 'a' | 'cate' | 'full' | 'half',
+    display: 'link' | 'cate',
     nameDisplay: string
     categories?: MenuItem[]
     url?: string
