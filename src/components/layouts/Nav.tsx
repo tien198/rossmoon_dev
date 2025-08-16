@@ -1,22 +1,23 @@
 import type { MenuItem } from "../types/menuItem";
 import NavList from "./Nav.List";
-import NavPanel from "./Nav.ListPanel";
 
+import styles from './nav.module.scss'
 
 
 
 export default function Navbar() {
     const menuItems = useGetMenuItems()
     return (
-        <nav className="fixed overflow-auto text-gray-800 text-2xl border-r border-r-gray-400  z-0
-            h-screen w-[33.3333vw] max-w-[441px]"
-        >
-            <NavList items={menuItems} />
-            <NavPanel item={menuItems[0]} />
-            {/* Footer */}
-            <div className=" px-4 py-12 border-t border-t-gray-400">
-                <p>Chúng tôi có thể giúp gì cho bạn?</p>
-                <p className="font-medium">+84 2838614107</p>
+        <nav className={styles['nav']}>
+            <div className={styles['wrapper']}>
+                <NavList items={menuItems} />
+
+                {/* <NavPanel item={menuItems[0]} /> */}
+                {/* Footer */}
+                <div className=" py-12 border-t border-t-gray-300">
+                    <p>Chúng tôi có thể giúp gì cho bạn?</p>
+                    <p className="font-medium">+84 2838614107</p>
+                </div>
             </div>
         </nav>
     );

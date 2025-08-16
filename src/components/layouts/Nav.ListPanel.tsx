@@ -1,17 +1,22 @@
 import type { MenuItem } from "../types/menuItem";
 
+import styles from './nav.module.scss'
+
 type Props = {
     item: MenuItem
+    active?: boolean
 }
 
-export default function NavPanel({ item }: Props) {
+export default function NavPanel({ item, active = false }: Props) {
+    
     return (
-        <ul className="absolute top-0 left-full
-            h-screen w-[33.3333vw] max-w-[441px]"
+        <div className={`${styles['wrapper']} ${styles['list-panel']} ${active && styles['active']}`}
         >
-            {item.categories?.map(i =>
-                <li><a href={i.url||''}>{i.nameDisplay}</a></li>
-            )}
-        </ul>
+            <ul className={styles['nav-list']}>
+                {item.categories?.map(i =>
+                    <li><a href={i.url || ''}>{i.nameDisplay}</a> <span>also</span></li>
+                )}
+            </ul>
+        </div>
     )
 }
