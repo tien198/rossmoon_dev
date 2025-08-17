@@ -32,25 +32,32 @@ export default function Navbar() {
 
 
 
-
+// hierachical struture with
+//  3 level
 function useGetMenuItems(): MenuItem[] {
     return [
         {
             display: 'cate',
             nameDisplay: "Quà tặng và dịch vụ cá nhân hóa",
-            categories: [
+            // 2
+            categoryItems: [
                 {
                     display: 'link',
                     nameDisplay: "Tất cả quà tặng",
                     url: 'none'
                 },
-                // {
-                //     display: 'cate',
-                //     nameDisplay: "Quà tặng cho nữ",
-                //     categories: [
-
-                //     ]
-                // },
+                {
+                    display: 'cate',
+                    nameDisplay: "Quà tặng cho nữ",
+                    // 3
+                    categoryItems: [
+                        {
+                            display: 'link',
+                            nameDisplay: "Sản phẩm mới",
+                            url: 'none',
+                        },
+                    ]
+                },
             ]
         },
         {

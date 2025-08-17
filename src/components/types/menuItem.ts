@@ -1,6 +1,6 @@
 export type MenuItem = {
     display: 'link' | 'cate',
     nameDisplay: string
-    categories?: MenuItem[]
+    categoryItems?: MenuItem[]
     url?: string
 }
