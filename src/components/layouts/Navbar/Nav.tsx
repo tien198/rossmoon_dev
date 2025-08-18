@@ -31,8 +31,6 @@ export default function Nav() {
 
 
 
-
-
 // hierachical struture with
 //  3 level
 function useGetMenuItems(): MenuItem[] {
@@ -59,13 +57,43 @@ function useGetMenuItems(): MenuItem[] {
                         },
                     ]
                 },
+                {
+                    display: 'cate',
+                    nameDisplay: "Quà tặng cho nữ",
+                    // 3
+                    categoryItems: [
+                        {
+                            display: 'link',
+                            nameDisplay: "Túi xách và ví",
+                            url: 'none',
+                        },
+                        {
+                            display: 'link',
+                            nameDisplay: "Đồ Nữ",
+                            url: 'none',
+                        },
+                    ]
+                },
             ]
         },
         {
-            display: 'link',
+            display: 'cate',
             nameDisplay: "Sản phẩm mới",
-            url: 'none',
+            // 3
+            categoryItems: [
+                {
+                    display: 'link',
+                    nameDisplay: "Đồ Nữ",
+                    url: 'none',
+                },
+                {
+                    display: 'link',
+                    nameDisplay: "Đồ Nam",
+                    url: 'none',
+                },
+            ]
         },
+
         {
             display: 'link',
             nameDisplay: "Túi xách và ví",
@@ -81,36 +109,38 @@ function useGetMenuItems(): MenuItem[] {
             nameDisplay: "Đồ Nam",
             url: 'none',
         },
-        {
-            display: 'link',
-            nameDisplay: "Trang sức",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Đồng hồ",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Nước hoa",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Rương, Phụ kiện du lịch và Trang trí nội thất",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Dịch vụ",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Maison Louis Vuitton",
-            url: 'none',
-        },
+        /*
+    {
+        display: 'link',
+        nameDisplay: "Trang sức",
+        url: 'none',
+    },
+    {
+        display: 'link',
+        nameDisplay: "Đồng hồ",
+        url: 'none',
+    },
+    {
+        display: 'link',
+        nameDisplay: "Nước hoa",
+        url: 'none',
+    },
+    {
+        display: 'link',
+        nameDisplay: "Rương, Phụ kiện du lịch và Trang trí nội thất",
+        url: 'none',
+    },
+    {
+        display: 'link',
+        nameDisplay: "Dịch vụ",
+        url: 'none',
+    },
+    {
+        display: 'link',
+        nameDisplay: "Maison Louis Vuitton",
+        url: 'none',
+    },
+    */
     ];
 }
 
