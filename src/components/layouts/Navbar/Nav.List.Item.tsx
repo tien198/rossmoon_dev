@@ -56,7 +56,8 @@ export default function Item({ item, layoutActive }: Props) {
             <Panel
                 categories={item.categoryItems!}
                 layoutActive={active}
-                active={active && layoutActive} />
+                active={active && layoutActive}
+            />
         </li>
     )
 }

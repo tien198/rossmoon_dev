@@ -13,9 +13,8 @@ export default function Nav() {
             <div className={styles['wrapper']}>
                 <NavList items={menuItems} />
 
-                {/* <NavPanel item={menuItems[0]} /> */}
                 {/* Footer */}
-                <div className=" py-12 border-t border-t-gray-300">
+                <div className={styles['nav__list--services']}>
                     <p>Chúng tôi có thể giúp gì cho bạn?</p>
                     <p className="font-medium">+84 2838614107</p>
                 </div>

@@ -10,19 +10,18 @@ type Props = {
 }
 
 export default function Panel({ categories, layoutActive = false, active = false }: Props) {
-
-    const panelCls = styles['nav__list__panel']
     const activeCls = active ? styles['active'] : ''
-
     return (
         <div
-            className={panelCls + ' ' + activeCls}
+            className={styles['nav__list__panel'] + ' ' + activeCls}
         >
-            <ul className={styles['wrapper']}>
-                {categories?.map((i, idx) =>
-                    <Item item={i} layoutActive={layoutActive} key={idx} />
-                )}
-            </ul>
+            <div className={styles['wrapper']}>
+                <ul className={styles['nav__list']}>
+                    {categories?.map((i, idx) =>
+                        <Item item={i} layoutActive={layoutActive} key={idx} />
+                    )}
+                </ul>
+            </div>
         </div>
     )
 }
