@@ -1,13 +1,14 @@
-import type { MenuItem } from "../types/menuItem";
+import type { MenuItem } from "../../types/menuItem";
 import NavList from "./Nav.List";
 
 import styles from './nav.module.scss'
+// import NavProvider from "./store/navBarContext";
 
 
-
-export default function Navbar() {
+export default function Nav() {
     const menuItems = useGetMenuItems()
     return (
+        // <NavProvider>
         <nav className={styles['nav']}>
             <div className={styles['wrapper']}>
                 <NavList items={menuItems} />
@@ -20,6 +21,7 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
+        // </NavProvider>
     );
 }
 

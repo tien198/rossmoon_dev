@@ -1,7 +1,7 @@
 // import './hover.css'
 
 import { useState } from "react";
-import Navbar from "./components/layouts/Nav";
+import Navbar from "./components/layouts/Navbar/Nav";
 
 
 export default function App() {

@@ -1,19 +1,26 @@
 'use client'
 
 import { IoIosArrowForward } from "react-icons/io"
-import type { MenuItem } from "../types/menuItem"
+import type { MenuItem } from "../../types/menuItem"
 
 import styles from './nav.module.scss'
 import Panel from "./Nav.List.Panel"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 type Props = {
     item: MenuItem
+    layoutActive: boolean
 }
 
 // Recursion
-export default function Item({ item }: Props) {
+export default function Item({ item, layoutActive }: Props) {
     const [active, setActive] = useState(false)
+
+    // Set this component to invisible if it's parent was invisible
+    // setActive == false when layoutActive was setting to false
+    useEffect(() => {
+        if (layoutActive === false) setActive(false)
+    }, [layoutActive])
 
     // base case
     if (item.display == 'link')
@@ -34,7 +41,10 @@ export default function Item({ item }: Props) {
         <li className={styles['nav__list__item']}>
             <div
                 className={styles['item']}
-                onClick={() => setActive(prev => !prev)}
+                onClick={() => {
+                    setActive(prev => !prev);
+                    // setSelfLayoutActive(prev => !prev)
+                }}
             >
                 <span>{item.nameDisplay}</span>
                 <span><IoIosArrowForward color="#000" /></span>
@@ -43,9 +53,10 @@ export default function Item({ item }: Props) {
                 Loop for categories item and 
                 call Item (recursion) in every item
             */}
-            {active &&
-                <Panel categories={item.categoryItems!} active={active} />
-            }
+            <Panel
+                categories={item.categoryItems!}
+                layoutActive={active}
+                active={active && layoutActive} />
         </li>
     )
 }

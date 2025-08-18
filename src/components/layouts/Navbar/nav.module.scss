@@ -50,6 +50,7 @@
 
     .wrapper {
         overflow-y: auto;
+        
         height: 100%;
         width: 100%;
         border-left: 1px solid var(--light-gray);
@@ -61,3 +62,7 @@
         max-width: 441px;
     }
 }
+
+/*
+    transition: all .3s cubic-bezier(.39,.575,.565,1)
+*/
