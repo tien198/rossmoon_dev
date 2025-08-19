@@ -2,6 +2,7 @@ import type { MenuItem } from "../../types/menuItem";
 
 import styles from './nav.module.scss'
 import Item from "./Nav.List.Item";
+import { useState } from "react";
 
 type Props = {
     items: MenuItem[]
@@ -9,10 +10,17 @@ type Props = {
 
 export default function NavList({ items }: Props) {
 
-    return <ul className={styles['nav__list']}>
-        {items.map((item, idx) => (
-            <Item item={item} key={idx} layoutActive/>
-        ))}
-    </ul>
+    const [actIdx, setActIdx] = useState<number | null>(null)
+
+    return <>
+        <ul className={styles['nav__list']}>
+            {items.map((item, idx) => (
+                <Item item={item} key={idx}
+                    layoutActive
+                    isActive={actIdx === idx} active={() => setActIdx(prev => (prev === idx) ? null : idx)}
+                />
+            ))}
+        </ul>
+    </>
 
 }

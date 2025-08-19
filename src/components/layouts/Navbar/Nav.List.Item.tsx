@@ -5,22 +5,18 @@ import type { MenuItem } from "../../types/menuItem"
 
 import styles from './nav.module.scss'
 import Panel from "./Nav.List.Panel"
-import { useEffect, useState } from "react"
 
 type Props = {
     item: MenuItem
     layoutActive: boolean
+    isActive: boolean
+    active: () => void
 }
 
 // Recursion
-export default function Item({ item, layoutActive }: Props) {
-    const [active, setActive] = useState(false)
-
+export default function Item({ item, layoutActive, isActive, active }: Props) {
     // Set this component to invisible if it's parent was invisible
     // setActive == false when layoutActive was setting to false
-    useEffect(() => {
-        if (layoutActive === false) setActive(false)
-    }, [layoutActive])
 
     // base case
     if (item.display == 'link')
@@ -39,24 +35,23 @@ export default function Item({ item, layoutActive }: Props) {
     // recursive case
     return (
         <li className={styles['nav__list__item']}>
-            <div
+            <button
                 className={styles['item']}
                 onClick={() => {
-                    setActive(prev => !prev);
-                    // setSelfLayoutActive(prev => !prev)
+                    active()
                 }}
             >
                 <span>{item.nameDisplay}</span>
                 <span><IoIosArrowForward color="#000" /></span>
-            </div>
+            </button>
             {/*
                 Loop for categories item and 
                 call Item (recursion) in every item
             */}
             <Panel
                 categories={item.categoryItems!}
-                layoutActive={active}
-                active={active && layoutActive}
+                layoutActive={isActive}
+                active={isActive && layoutActive}
             />
         </li>
     )
