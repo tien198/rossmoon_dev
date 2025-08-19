@@ -1,11 +1,9 @@
 // import './hover.css'
 
-import { useState } from "react";
 import Navbar from "./components/layouts/Navbar/Nav";
 
 
 export default function App() {
-  const [visible, setVisible] = useState(false)
   return <>
     <Navbar />
     {/* <div className="text-right">
