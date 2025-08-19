@@ -92,12 +92,11 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         top: 0;
         width: 0;
         height: 100vh;
-     
+
         &.active {
-        width: 33.3333vw;
-        max-width: 441px;
+            width: min(33.3333vw,441px);
             opacity: 1;
-    }
+        }
     }
 }
 
