@@ -1,25 +1,45 @@
+import { useState } from "react";
 import type { MenuItem } from "../../types/menuItem";
 import NavList from "./Nav.List";
 
 import styles from './nav.module.scss'
+import { CiMenuBurger } from "react-icons/ci";
 // import NavProvider from "./store/navBarContext";
 
 
 export default function Nav() {
     const menuItems = useGetMenuItems()
+    const [isActive, setActive] = useState(false)
+
+    const handleActive = () => setActive(prev => !prev)
     return (
         // <NavProvider>
-        <nav className={styles['nav']}>
-            <div className={styles['wrapper']}>
-                <NavList items={menuItems} />
+        <>
+            <button
+                className="z-50 text-center absolute top-4 left-8  p-2 bg-white"
+                onClick={handleActive}>
+                <CiMenuBurger /> <span className="hidden">Menu</span>
+            </button>
+            <nav
+                className={styles['nav'] + ' ' + (isActive ? styles['active'] : '')}
+            >
+                <NavList
+                    items={menuItems}
+                    isActive={isActive}
+                />
 
                 {/* Footer */}
-                <div className={styles['nav__list--services']}>
+                <div
+                    className={
+                        styles['nav__list--services']
+                        + ' ' + (isActive ? styles['active'] : '')
+                    }
+                >
                     <p>Chúng tôi có thể giúp gì cho bạn?</p>
                     <p className="font-medium">+84 2838614107</p>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </>
         // </NavProvider>
     );
 }

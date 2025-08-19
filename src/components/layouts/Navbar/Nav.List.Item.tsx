@@ -36,7 +36,7 @@ export default function Item({ item, layoutActive, isActive, active }: Props) {
     return (
         <li className={styles['nav__list__item']}>
             <button
-                className={styles['item']}
+                className={`${styles['item']} ${isActive ? 'border-b border-gray-700' : ''}`}
                 onClick={() => {
                     active()
                 }}
