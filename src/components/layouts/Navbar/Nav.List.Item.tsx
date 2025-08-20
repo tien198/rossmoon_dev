@@ -49,7 +49,7 @@ export default function Item({ item, layoutActive, isActive, active }: Props) {
                 call Item (recursion) in every item
             */}
             <Panel
-                categories={item.categoryItems!}
+                item={item}
                 layoutActive={isActive}
                 active={isActive && layoutActive}
             />

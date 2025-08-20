@@ -7,12 +7,12 @@ import styles from './nav.module.scss'
 type Props = {
     // isRoot indicate that this is root of Navbar
     isRoot?: boolean
-    categories: MenuItem[]
+    item: MenuItem
     layoutActive: boolean
     active?: boolean
 }
 
-export default function Panel({ isRoot = false, categories, layoutActive = false, active = false }: Props) {
+export default function Panel({ isRoot = false, item, layoutActive = false, active = false }: Props) {
 
     const [laytAct, setLaytAct] = useState(false)
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function Panel({ isRoot = false, categories, layoutActive = false
         >
             <div className={`${styles['wrapper']} ${activeCls}`}>
                 <ul className={`${styles['nav__list']} ${activeCls}`}>
-                    {categories?.map((i, idx) =>
+                    {item.categoryItems?.map((i, idx) =>
                         <Item
                             item={i} key={idx}
                             layoutActive={laytAct}
