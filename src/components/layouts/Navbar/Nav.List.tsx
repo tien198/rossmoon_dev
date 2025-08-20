@@ -8,5 +8,5 @@ type Props = {
 }
 
 export default function NavList({ item, isActive }: Props) {
-    return <Panel item={item} layoutActive active={isActive} isRoot />
+    return <Panel item={item} layoutActive isActive={isActive} isRoot />
 }

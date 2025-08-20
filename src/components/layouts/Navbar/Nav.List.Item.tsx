@@ -51,7 +51,8 @@ export default function Item({ item, layoutActive, isActive, active }: Props) {
             <Panel
                 item={item}
                 layoutActive={isActive}
-                active={isActive && layoutActive}
+                isActive={isActive && layoutActive}
+                handleActivate={active}
             />
         </li>
     )
