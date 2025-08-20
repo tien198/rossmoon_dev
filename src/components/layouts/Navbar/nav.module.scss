@@ -80,6 +80,7 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         padding: 5rem 0;
         opacity: 0;
         transition: $transition-default;
+        transition: border-right 0ms;
 
         &.active {
             overflow-y: auto;
@@ -94,7 +95,7 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         height: 100vh;
 
         &.active {
-            width: min(33.3333vw,441px);
+            width: min(33.3333vw, 441px);
             opacity: 1;
         }
     }
