@@ -27,39 +27,42 @@ export default function Panel({ isRoot = false, item, layoutActive = false, isAc
 
     const [actIdx, setActIdx] = useState<number | null>(null)
 
-    const activeContentCls = isActive && layoutActive ? styles['active'] : ''
+    const activeCls = isActive && layoutActive ? styles['active'] : ''
 
     return (
         <>
             <div
-                className={isRoot ? '' : styles['nav__list__panel--content'] + ' ' + activeContentCls}
+                className={isRoot ? '' : styles['nav__list__panel'] + ' ' + activeCls}
             >
+
+                <div className={styles['nav__list__panel--content'] + ' ' + activeCls}>
                 {/* This layout is children's layout */}
-                <div className={styles['nav__list__panel--layout'] + ' ' + ((actIdx !== null && isActive) ? styles['active'] : '')}></div>
+                    <div className={styles['nav__list__panel--layout'] + ' ' + ((actIdx !== null && isActive) ? styles['active'] : '')}></div>
 
-                <div className={`${styles['wrapper']} ${activeContentCls}`}>
-                    {item.nameDisplay
-                        &&
-                        <BackButton
-                            onClick={handleActivate!}
-                        >
-                            {item.nameDisplay}
-                        </BackButton>}
-                    <ul className={`${styles['nav__list']} ${activeContentCls}`}>
-                        {item.categoryItems?.map((i, idx) =>
-                            <Item
-                                item={i} key={idx}
-                                layoutActive={laytAct}
-                                isActive={actIdx === idx}
-                                active={
-                                    () => setActIdx(prev =>
-                                        (prev === idx) ? null : idx
-                                    )
-                                }
-                            />
+                    <div className={`${styles['wrapper']} ${activeCls}`}>
+                        {item.nameDisplay
+                            &&
+                            <BackButton
+                                onClick={handleActivate!}
+                            >
+                                {item.nameDisplay}
+                            </BackButton>}
+                        <ul className={`${styles['nav__list']} ${activeCls}`}>
+                            {item.categoryItems?.map((i, idx) =>
+                                <Item
+                                    item={i} key={idx}
+                                    layoutActive={laytAct}
+                                    isActive={actIdx === idx}
+                                    active={
+                                        () => setActIdx(prev =>
+                                            (prev === idx) ? null : idx
+                                        )
+                                    }
+                                />
 
-                        )}
-                    </ul>
+                            )}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </>
