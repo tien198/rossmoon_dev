@@ -1,6 +1,8 @@
 $transition-ease: cubic-bezier(0.39, 0.575, 0.565, 1);
 $transition-default: all 0.3s $transition-ease;
 
+
+
 .active {
     visibility: visible !important;
     opacity: 1 !important;
@@ -106,9 +108,7 @@ $transition-default: all 0.3s $transition-ease;
         inset: 0 0 0 100%;
         background-color: var(--white);
         visibility: hidden;
-        height: 100%;
         opacity: 0;
-        // z-index: -1;
         transition: $transition-default;
 
         &.active {
