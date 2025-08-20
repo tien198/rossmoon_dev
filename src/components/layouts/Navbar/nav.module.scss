@@ -1,8 +1,9 @@
 $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
-// .active {
-//     visibility: visible !important;
-// }
+.active {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
 
 .nav {
     position: fixed;
@@ -15,7 +16,6 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
     &.active {
         height: 100vh;
-        opacity: 1;
     }
 
     a {
@@ -58,7 +58,6 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         &.active {
             border-top: 1px solid var(--light-gray);
             border-right: 1px solid var(--light-gray);
-            opacity: 1;
         }
     }
 
@@ -67,11 +66,6 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         visibility: hidden;
         opacity: 0;
         transition: $transition-default;
-
-        &.active {
-            visibility: visible;
-            opacity: 1;
-        }
     }
 
     &__list__panel {
@@ -80,9 +74,6 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         background-color: var(--white);
         visibility: hidden;
 
-        &.active {
-            visibility: visible !important;
-        }
 
         @media (min-width: 768px) {
             top: 0;

@@ -8,14 +8,12 @@ type Props = {
 
 export default function BackButton(props: Props) {
     return (
-        <li>
-            <button
-                className={`${styles['item']} ${styles['back-button']}`}
-                onClick={props.onClick}
-            >
-                <IoIosArrowRoundBack size={'1.5rem'} />
-                {props.children}
-            </button>
-        </li>
+        <button
+            className={`${styles['item']} ${styles['back-button']}`}
+            onClick={props.onClick}
+        >
+            <IoIosArrowRoundBack size={'1.5rem'} />
+            {props.children}
+        </button>
     )
 }
