@@ -68,18 +68,45 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         transition: $transition-default;
     }
 
-    &__list__panel {
+    &__list__panel--content {
         position: absolute;
-        inset: 0;
-        background-color: var(--white);
+        inset: 0 0 0 100%;
         visibility: hidden;
+        opacity: 0;
+        transition: $transition-default;
 
+        &.active {
+            inset: 0 0 0 0;
+        }
 
         @media (min-width: 768px) {
-            top: 0;
-            left: 100%;
-            width: 33.3333vw;
-            max-width: 441px;
+            width: min(33.3333vw, 441px);
+
+            &.active {
+                inset: 0 0 0 100%;
+            }
+        }
+    }
+
+    &__list__panel--layout {
+        position: absolute;
+        inset: 0 0 0 100%;
+        background-color: var(--white);
+        visibility: hidden;
+        height: 100%;
+        opacity: 0;
+        transition: $transition-default;
+
+        &.active {
+            inset: 0 0 0 0;
+        }
+
+        @media (min-width: 768px) {
+            width: min(33.3333vw, 441px);
+
+            &.active {
+                inset: 0 0 0 100%;
+            }
         }
     }
 
@@ -88,6 +115,7 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         opacity: 0;
         transition: $transition-default;
         transition: border-right 0ms;
+        height: 100%;
 
         &.active {
             overflow-y: auto;
