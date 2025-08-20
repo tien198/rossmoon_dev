@@ -42,6 +42,7 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
         .back-button {
             padding: 1.5rem 2.5rem;
+            border-top: 1px solid var(--light-gray);
             border-bottom: 1px solid var(--light-gray);
 
             @media (min-width: 768px) {
