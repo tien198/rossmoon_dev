@@ -34,14 +34,14 @@ export default function Panel({ isRoot = false, item, layoutActive = false, isAc
             className={isRoot ? '' : styles['nav__list__panel'] + ' ' + activeCls}
         >
             <div className={`${styles['wrapper']} ${activeCls}`}>
+                {item.nameDisplay
+                    &&
+                    <BackButton
+                        onClick={handleActivate!}
+                    >
+                        {item.nameDisplay}
+                    </BackButton>}
                 <ul className={`${styles['nav__list']} ${activeCls}`}>
-                    {item.nameDisplay
-                        &&
-                        <BackButton
-                            onClick={handleActivate!}
-                        >
-                            {item.nameDisplay}
-                        </BackButton>}
                     {item.categoryItems?.map((i, idx) =>
                         <Item
                             item={i} key={idx}

@@ -29,13 +29,25 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         gap: 1.5rem;
     }
 
-    li .item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
-        width: 100%;
-        cursor: pointer;
+    li {
+        .item {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+            text-align: left;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .back-button {
+            padding: 1.5rem 2.5rem;
+            border-bottom: 1px solid var(--light-gray);
+
+            @media (min-width: 768px) {
+                display: none;
+            }
+        }
     }
 
     &__list--services {
@@ -51,7 +63,7 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
     }
 
     &__list {
-        padding: 0 2.5rem 2.5rem;
+        padding: 2rem 2.5rem 2.5rem;
         visibility: hidden;
         opacity: 0;
         transition: $transition-default;

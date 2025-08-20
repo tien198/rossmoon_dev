@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from 'react'
 import styles from './nav.module.scss'
+import { IoIosArrowBack } from 'react-icons/io'
 
 type Props = {
     onClick: () => void
@@ -7,8 +8,12 @@ type Props = {
 
 export default function BackButton(props: Props) {
     return (
-        <li className={styles['']}>
-            <button onClick={props.onClick}>
+        <li>
+            <button
+                className={`${styles['item']} ${styles['back-button']}`}
+                onClick={props.onClick}
+            >
+                <IoIosArrowBack/>
                 {props.children}
             </button>
         </li>
