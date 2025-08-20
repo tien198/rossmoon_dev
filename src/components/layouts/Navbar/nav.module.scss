@@ -1,8 +1,8 @@
 $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
-.active {
-    visibility: visible !important;
-}
+// .active {
+//     visibility: visible !important;
+// }
 
 .nav {
     position: fixed;
@@ -79,6 +79,10 @@ $transition-default: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
         inset: 0;
         background-color: var(--white);
         visibility: hidden;
+
+        &.active {
+            visibility: visible !important;
+        }
 
         @media (min-width: 768px) {
             top: 0;
