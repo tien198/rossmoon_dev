@@ -23,6 +23,7 @@ export default function Nav() {
             <nav
                 className={styles['nav'] + ' ' + (isActive ? styles['active'] : '')}
             >
+                <div className="z-50 h-20 w-full border-b border-b-gray-200 absolute top-0 left-0"></div>
                 <NavList
                     item={menuItems}
                     isActive={isActive}
