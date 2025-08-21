@@ -37,11 +37,11 @@ $transition-default: all 0.3s $transition-ease;
         list-style: none;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
     }
 
     li {
         .item {
+            padding: 1.5rem 0;
             display: flex;
             justify-content: space-between;
             gap: 1rem;
@@ -49,6 +49,7 @@ $transition-default: all 0.3s $transition-ease;
             text-align: left;
             width: 100%;
             cursor: pointer;
+            transition: border-bottom 0.07s $transition-ease;
         }
 
         .back-button {

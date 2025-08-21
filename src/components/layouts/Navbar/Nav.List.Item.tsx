@@ -12,25 +12,31 @@ type Props = {
     item: MenuItem
     idx: number
     layoutActive: boolean
-    // isActive: boolean
-    // active: () => void
 }
 
 // Recursion
 export default function Item({ item, idx, layoutActive }: Props) {
-    const { actIdx, setActIdx } = useContext(ListPanelContext)
+    const { state, setActIndex, setSelectedIndex } = useContext(ListPanelContext)
 
-    const isActive = actIdx === idx
-    const handleActive = () => setActIdx(prev =>
-        (prev === idx) ? null : idx
-    )
+    const isActive = state.actIdx === idx
+    const isSelected = state.selectedIdx === idx
 
+    const isDisabledCls = (state.actIdx === null && state.selectedIdx === null)
+        ? ''
+        : styles['disabled']
+
+    const isSelectedCls = (isActive || isSelected)
+        ? styles['is-selected']
+        : isDisabledCls
 
     // base case
     if (item.display == 'link')
         return (
             <li>
                 <a
+                    className={`${styles['item']} ${isSelectedCls}`}
+                    onMouseEnter={() => setSelectedIndex(idx)}
+                    onMouseLeave={() => setSelectedIndex(idx)}
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -40,14 +46,18 @@ export default function Item({ item, idx, layoutActive }: Props) {
             </li>
         )
 
+
+
     // recursive case
     return (
-        <li className={styles['nav__list__item']}>
+        <li className={styles['nav__list__item']} >
             <button
-                className={`${styles['item']} ${isActive ? styles['is-selected'] : ''}`}
+                className={`${styles['item']} ${isSelectedCls}`}
                 onClick={() => {
-                    handleActive()
+                    setActIndex(idx)
                 }}
+                onMouseEnter={() => setSelectedIndex(idx)}
+                onMouseLeave={() => setSelectedIndex(idx)}
             >
                 <span>{item.nameDisplay}</span>
                 <span><IoIosArrowForward color="#000" /></span>
@@ -60,7 +70,7 @@ export default function Item({ item, idx, layoutActive }: Props) {
                 item={item}
                 layoutActive={isActive}
                 isActive={isActive && layoutActive}
-                handleActivate={handleActive}
+                handleActivate={() => setActIndex(idx)}
             />
         </li>
     )

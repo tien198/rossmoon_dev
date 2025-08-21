@@ -33,7 +33,7 @@ function PanelContainer({ isRoot = false, item, layoutActive = false, isActive =
 
     }, [layoutActive, isActive])
 
-    const { actIdx } = useContext(ListPanelContext)
+    const { state } = useContext(ListPanelContext)
 
     const activeCls = isActive && layoutActive ? styles['active'] : ''
 
@@ -45,7 +45,7 @@ function PanelContainer({ isRoot = false, item, layoutActive = false, isActive =
 
                 <div className={styles['nav__list__panel--content'] + ' ' + activeCls}>
                     {/* This layout is children's layout */}
-                    <div className={styles['nav__list__panel--layout'] + ' ' + ((actIdx !== null && isActive) ? styles['active'] : '')}></div>
+                    <div className={styles['nav__list__panel--layout'] + ' ' + ((state.actIdx !== null && isActive) ? styles['active'] : '')}></div>
 
                     <div className={`${styles['wrapper']} ${activeCls}`}>
                         {item.nameDisplay
