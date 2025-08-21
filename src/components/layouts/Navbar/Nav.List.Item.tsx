@@ -5,18 +5,26 @@ import type { MenuItem } from "../../types/menuItem"
 
 import styles from './nav.module.scss'
 import Panel from "./Nav.List.Panel"
+import { useContext } from "react"
+import { ListPanelContext } from "./store/navBarContext"
 
 type Props = {
     item: MenuItem
+    idx: number
     layoutActive: boolean
-    isActive: boolean
-    active: () => void
+    // isActive: boolean
+    // active: () => void
 }
 
 // Recursion
-export default function Item({ item, layoutActive, isActive, active }: Props) {
-    // Set this component to invisible if it's parent was invisible
-    // setActive == false when layoutActive was setting to false
+export default function Item({ item, idx, layoutActive }: Props) {
+    const { actIdx, setActIdx } = useContext(ListPanelContext)
+
+    const isActive = actIdx === idx
+    const handleActive = () => setActIdx(prev =>
+        (prev === idx) ? null : idx
+    )
+
 
     // base case
     if (item.display == 'link')
@@ -38,7 +46,7 @@ export default function Item({ item, layoutActive, isActive, active }: Props) {
             <button
                 className={`${styles['item']} ${isActive ? 'border-b border-gray-700' : ''}`}
                 onClick={() => {
-                    active()
+                    handleActive()
                 }}
             >
                 <span>{item.nameDisplay}</span>
@@ -52,7 +60,7 @@ export default function Item({ item, layoutActive, isActive, active }: Props) {
                 item={item}
                 layoutActive={isActive}
                 isActive={isActive && layoutActive}
-                handleActivate={active}
+                handleActivate={handleActive}
             />
         </li>
     )

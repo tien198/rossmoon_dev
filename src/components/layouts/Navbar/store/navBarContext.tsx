@@ -1,21 +1,25 @@
 import { createContext, useState, type PropsWithChildren } from "react";
 
 
+type ContextProps = {
+    actIdx: number | null
+    setActIdx: React.Dispatch<React.SetStateAction<number | null>>
+}
 
-export const NavContext = createContext({
-    active: false,
-    toggleActive: () => { },
+export const ListPanelContext = createContext<ContextProps>({
+    actIdx: null,
+    setActIdx() { },
 })
 
 
 
 
-export default function NavProvider({ children }: PropsWithChildren) {
-    const [active, setActive] = useState(false)
-    const toggleActive = () => setActive(prev => !prev)
+export default function ListPanelProvider({ children }: PropsWithChildren) {
+    const [actIdx, setActIdx] = useState<number | null>(null)
+
     return (
-        <NavContext.Provider value={{ active, toggleActive }}>
+        <ListPanelContext.Provider value={{ actIdx, setActIdx }}>
             {children}
-        </NavContext.Provider>
+        </ListPanelContext.Provider>
     )
 }

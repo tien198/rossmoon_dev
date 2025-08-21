@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import type { MenuItem } from "../../types/menuItem";
 import Item from "./Nav.List.Item";
 
 import styles from './nav.module.scss'
 import BackButton from "./Nav.List.BackButton";
+import ListPanelProvider, { ListPanelContext } from "./store/navBarContext";
 
 type Props = {
     // isRoot indicate that this is root of Navbar
@@ -14,7 +15,14 @@ type Props = {
     handleActivate?: () => void
 }
 
-export default function Panel({ isRoot = false, item, layoutActive = false, isActive = false, handleActivate }: Props) {
+export default function Panel(props: Props) {
+    return <ListPanelProvider>
+        <PanelContainer {...props} />
+    </ListPanelProvider>
+}
+
+
+function PanelContainer({ isRoot = false, item, layoutActive = false, isActive = false, handleActivate }: Props) {
 
     const [laytAct, setLaytAct] = useState(false)
     useEffect(() => {
@@ -25,7 +33,7 @@ export default function Panel({ isRoot = false, item, layoutActive = false, isAc
 
     }, [layoutActive, isActive])
 
-    const [actIdx, setActIdx] = useState<number | null>(null)
+    const { actIdx } = useContext(ListPanelContext)
 
     const activeCls = isActive && layoutActive ? styles['active'] : ''
 
@@ -36,7 +44,7 @@ export default function Panel({ isRoot = false, item, layoutActive = false, isAc
             >
 
                 <div className={styles['nav__list__panel--content'] + ' ' + activeCls}>
-                {/* This layout is children's layout */}
+                    {/* This layout is children's layout */}
                     <div className={styles['nav__list__panel--layout'] + ' ' + ((actIdx !== null && isActive) ? styles['active'] : '')}></div>
 
                     <div className={`${styles['wrapper']} ${activeCls}`}>
@@ -51,15 +59,9 @@ export default function Panel({ isRoot = false, item, layoutActive = false, isAc
                             {item.categoryItems?.map((i, idx) =>
                                 <Item
                                     item={i} key={idx}
+                                    idx={idx}
                                     layoutActive={laytAct}
-                                    isActive={actIdx === idx}
-                                    active={
-                                        () => setActIdx(prev =>
-                                            (prev === idx) ? null : idx
-                                        )
-                                    }
                                 />
-
                             )}
                         </ul>
                     </div>
