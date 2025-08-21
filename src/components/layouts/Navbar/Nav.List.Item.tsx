@@ -21,13 +21,13 @@ export default function Item({ item, idx, layoutActive }: Props) {
     const isActive = state.actIdx === idx
     const isSelected = state.selectedIdx === idx
 
-    const isDisabledCls = (state.actIdx === null && state.selectedIdx === null)
-        ? ''
-        : styles['disabled']
 
     const isSelectedCls = (isActive || isSelected)
         ? styles['is-selected']
-        : isDisabledCls
+        // only disable item when there is another item was active
+        : (state.actIdx === null && state.selectedIdx === null)
+            ? ''
+            : styles['disabled']
 
     // base case
     if (item.display == 'link')
