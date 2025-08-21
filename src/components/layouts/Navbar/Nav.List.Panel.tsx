@@ -4,7 +4,7 @@ import Item from "./Nav.List.Item";
 
 import styles from './nav.module.scss'
 import BackButton from "./Nav.List.BackButton";
-import ListPanelProvider, { ListPanelContext } from "./store/navBarContext";
+import ListPanelProvider, { ListPanelContext } from "./store/panelContext";
 
 type Props = {
     // isRoot indicate that this is root of Navbar

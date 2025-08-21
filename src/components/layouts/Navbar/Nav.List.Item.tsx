@@ -6,7 +6,7 @@ import type { MenuItem } from "../../types/menuItem"
 import styles from './nav.module.scss'
 import Panel from "./Nav.List.Panel"
 import { useContext } from "react"
-import { ListPanelContext } from "./store/navBarContext"
+import { ListPanelContext } from "./store/panelContext"
 
 type Props = {
     item: MenuItem
@@ -44,7 +44,7 @@ export default function Item({ item, idx, layoutActive }: Props) {
     return (
         <li className={styles['nav__list__item']}>
             <button
-                className={`${styles['item']} ${isActive ? 'border-b border-gray-700' : ''}`}
+                className={`${styles['item']} ${isActive ? styles['is-selected'] : ''}`}
                 onClick={() => {
                     handleActive()
                 }}

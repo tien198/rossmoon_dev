@@ -8,6 +8,14 @@ $transition-default: all 0.3s $transition-ease;
     opacity: 1 !important;
 }
 
+.is-selected {
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.disabled {
+    opacity: .6;
+}
+
 .nav {
     position: fixed;
     inset: 0;
