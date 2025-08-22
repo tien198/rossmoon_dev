@@ -8,9 +8,7 @@ $transition-default: all 0.3s $transition-ease;
     opacity: 1 !important;
 }
 
-.is-selected {
-    border-bottom: 1px solid var(--dark-gray);
-}
+
 
 .disabled {
     opacity: 1;
@@ -33,9 +31,7 @@ $transition-default: all 0.3s $transition-ease;
         height: 100vh;
     }
 
-    a {
-        color: var(--dark-gray);
-    }
+
 
     ul {
         list-style: none;
@@ -54,6 +50,20 @@ $transition-default: all 0.3s $transition-ease;
             width: 100%;
             cursor: pointer;
             transition: border-bottom 0.09s $transition-ease;
+
+            @media (min-width: 768px) {
+                span,
+                a {
+                    color: var(--dark-gray);
+                    background: linear-gradient(#000, #000) no-repeat 0 100% / 0 1px;
+                    transition: background-size .3s $transition-ease;
+
+                    &.is-selected {
+                        background-size: 100% 1px;
+                        /* đường kẻ trải rộng */
+                    }
+                }
+            }
         }
 
         .back-button {
