@@ -13,7 +13,11 @@ $transition-default: all 0.3s $transition-ease;
 }
 
 .disabled {
-    opacity: .6;
+    opacity: 1;
+
+    @media (min-width: 768px) {
+        opacity: .6;
+    }
 }
 
 .nav {
