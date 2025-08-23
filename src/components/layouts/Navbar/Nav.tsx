@@ -1,10 +1,10 @@
 import { useState } from "react";
 import type { MenuItem } from "../../types/menuItem";
-import NavList from "./Nav.List";
 
 import styles from './nav.module.scss'
 import { CiMenuBurger } from "react-icons/ci";
-// import NavProvider from "./store/navBarContext";
+import Panel from "./Nav.List.Panel";
+import Footer from "./Nav.Footer";
 
 
 export default function Nav() {
@@ -13,7 +13,6 @@ export default function Nav() {
 
     const handleActive = () => setActive(prev => !prev)
     return (
-        // <NavProvider>
         <>
             <button
                 className="z-50 text-center absolute top-4 left-8  p-2 bg-white"
@@ -23,25 +22,15 @@ export default function Nav() {
             <nav
                 className={styles['nav'] + ' ' + (isActive ? styles['active'] : '')}
             >
-                <div className="z-50 h-20 w-full border-b border-b-gray-200 absolute top-0 left-0"></div>
-                <NavList
+                <Panel
                     item={menuItems}
                     isActive={isActive}
+                    layoutActive
+                    isRoot
+                    footerPanel={<Footer />}
                 />
-
-                {/* Footer */}
-                <div
-                    className={
-                        styles['nav__list--services']
-                        + ' ' + (isActive ? styles['active'] : '')
-                    }
-                >
-                    <p>Chúng tôi có thể giúp gì cho bạn?</p>
-                    <p className="font-medium">+84 2838614107</p>
-                </div>
             </nav>
         </>
-        // </NavProvider>
     );
 }
 
@@ -133,38 +122,36 @@ function useGetMenuItems(): MenuItem {
                 nameDisplay: "Đồ Nam",
                 url: 'none',
             },
-            /*
-        {
-            display: 'link',
-            nameDisplay: "Trang sức",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Đồng hồ",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Nước hoa",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Rương, Phụ kiện du lịch và Trang trí nội thất",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Dịch vụ",
-            url: 'none',
-        },
-        {
-            display: 'link',
-            nameDisplay: "Maison Louis Vuitton",
-            url: 'none',
-        },
-        */
+            {
+                display: 'link',
+                nameDisplay: "Trang sức",
+                url: 'none',
+            },
+            {
+                display: 'link',
+                nameDisplay: "Đồng hồ",
+                url: 'none',
+            },
+            {
+                display: 'link',
+                nameDisplay: "Nước hoa",
+                url: 'none',
+            },
+            {
+                display: 'link',
+                nameDisplay: "Rương, Phụ kiện du lịch và Trang trí nội thất",
+                url: 'none',
+            },
+            {
+                display: 'link',
+                nameDisplay: "Dịch vụ",
+                url: 'none',
+            },
+            {
+                display: 'link',
+                nameDisplay: "Maison Louis Vuitton",
+                url: 'none',
+            },
         ]
     }
 }

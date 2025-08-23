@@ -13,6 +13,7 @@ type Props = {
     layoutActive: boolean
     isActive?: boolean
     handleActivate?: () => void
+    footerPanel: React.ReactElement
 }
 
 export default function Panel(props: Props) {
@@ -22,7 +23,10 @@ export default function Panel(props: Props) {
 }
 
 
-function PanelContainer({ isRoot = false, item, layoutActive = false, isActive = false, handleActivate }: Props) {
+function PanelContainer({
+    isRoot = false, item, layoutActive = false, isActive = false,
+    handleActivate, footerPanel
+}: Props) {
 
     const [laytAct, setLaytAct] = useState(false)
     useEffect(() => {
@@ -64,6 +68,9 @@ function PanelContainer({ isRoot = false, item, layoutActive = false, isActive =
                                 />
                             )}
                         </ul>
+                        {
+                            footerPanel
+                        }
                     </div>
                 </div>
             </div>
