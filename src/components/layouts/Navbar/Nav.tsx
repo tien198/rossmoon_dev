@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { MenuItem } from "../../types/menuItem";
 
 import styles from './nav.module.scss'
@@ -12,13 +12,27 @@ export default function Nav() {
     const [isActive, setActive] = useState(false)
 
     const handleActive = () => setActive(prev => !prev)
+
+    useEffect(() => {
+        if (isActive)
+            document.body.style.overflow = 'hidden'
+        else 
+            document.body.style.overflow = 'auto'
+    },
+        [isActive]
+    )
+
     return (
         <>
             <button
-                className="z-50 text-center absolute top-4 left-8  p-2 bg-white"
+                className="z-50 fixed text-center top-4 left-8  p-2 bg-white"
                 onClick={handleActive}>
                 <CiMenuBurger /> <span className="hidden">Menu</span>
             </button>
+            <div
+                className={styles['overlay'] + (isActive ? '' : 'hidden')}
+                onClick={() => setActive(prev => !prev)}
+            ></div >
             <nav
                 className={styles['nav'] + ' ' + (isActive ? styles['active'] : '')}
             >
@@ -30,6 +44,7 @@ export default function Nav() {
                     footerPanel={<Footer />}
                 />
             </nav>
+            
         </>
     );
 }

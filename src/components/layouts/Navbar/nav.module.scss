@@ -20,8 +20,17 @@ $header-height-desktop: 3rem;
     }
 }
 
+.overlay {
+    position: fixed;
+    z-index: 30;
+    opacity: .7;
+    inset: 0 0 0 0;
+    background-color: #000;
+}
+
 .nav {
     position: fixed;
+    z-index: 40;
     inset: $header-height-mobile 0;
     color: var(--dark-gray);
     background-color: var(--white);
