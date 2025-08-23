@@ -1,5 +1,5 @@
 $transition-ease: cubic-bezier(0.39, 0.575, 0.565, 1);
-$transition-default: all 0.3s $transition-ease;
+$transition-default: all .3s $transition-ease;
 
 $header-height-mobile: 2rem;
 $header-height-desktop: 3rem;
@@ -25,7 +25,7 @@ $header-height-desktop: 3rem;
     inset: $header-height-mobile 0;
     color: var(--dark-gray);
     background-color: var(--white);
-    height: 0vh;
+    height: 0;
     opacity: 0;
     transition: $transition-default;
 
@@ -131,7 +131,7 @@ $header-height-desktop: 3rem;
     }
 
     &__list__panel--content {
-        position: relative;
+        // position: relative;
         transform: translateY(-2.5rem);
         height: 100vh;
         opacity: 0;
@@ -144,10 +144,12 @@ $header-height-desktop: 3rem;
 
     &__list__panel--layout {
         position: absolute;
+        display: flex;
         inset: 0 0 0 100%;
         background-color: var(--white);
         visibility: hidden;
         opacity: 0;
+        border-right: 1px solid var(--light-gray);
         transition: $transition-default;
 
         &.active {
@@ -168,12 +170,10 @@ $header-height-desktop: 3rem;
         padding: 1rem 0;
         opacity: 0;
         transition: $transition-default;
-        transition: border-right 0s $transition-ease .3s;
         height: 100%;
 
         &.active {
             overflow-y: auto;
-            border-right: 1px solid var(--light-gray);
         }
     }
 
