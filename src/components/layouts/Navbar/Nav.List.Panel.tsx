@@ -13,7 +13,7 @@ type Props = {
     layoutActive: boolean
     isActive?: boolean
     handleActivate?: () => void
-    footerPanel: React.ReactElement
+    footerPanel?: React.ReactElement
 }
 
 export default function Panel(props: Props) {
