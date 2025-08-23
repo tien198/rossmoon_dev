@@ -1,6 +1,8 @@
 $transition-ease: cubic-bezier(0.39, 0.575, 0.565, 1);
 $transition-default: all 0.3s $transition-ease;
 
+$header-height-mobile: 2rem;
+$header-height-desktop: 3rem;
 
 
 .active {
@@ -20,7 +22,7 @@ $transition-default: all 0.3s $transition-ease;
 
 .nav {
     position: fixed;
-    inset: 0;
+    inset: $header-height-mobile 0;
     color: var(--dark-gray);
     background-color: var(--white);
     height: 0vh;
@@ -43,7 +45,7 @@ $transition-default: all 0.3s $transition-ease;
     }
 
     &.active {
-        height: 100vh;
+        height: calc(100vh - $header-height-mobile);
     }
 
 
@@ -93,12 +95,16 @@ $transition-default: all 0.3s $transition-ease;
     }
 
     &__list--services {
-        padding: 2.5rem 2.5rem;
-        border-top: 1px solid var(--light-gray);
+        padding-bottom: 8rem;
+
+        .service {
+            padding: 2.5rem 2.5rem;
+            border-top: 1px solid var(--light-gray);
+        }
     }
 
     &__list {
-        padding: 2rem 2.5rem 2.5rem;
+        padding: 0 2.5rem;
         visibility: hidden;
         opacity: 0;
         transition: $transition-default;
@@ -159,7 +165,7 @@ $transition-default: all 0.3s $transition-ease;
     }
 
     .wrapper {
-        padding: 5rem 0;
+        padding: 1rem 0;
         opacity: 0;
         transition: $transition-default;
         transition: border-right 0s $transition-ease .3s;
@@ -168,18 +174,17 @@ $transition-default: all 0.3s $transition-ease;
         &.active {
             overflow-y: auto;
             border-right: 1px solid var(--light-gray);
-            opacity: 1;
         }
     }
 
     @media (min-width: 768px) {
-        top: 0;
+        inset: $header-height-desktop 0;
         width: 0;
-        height: 100vh;
+        height: calc(100vh - 3rem);
 
         &.active {
             width: min(33.3333vw, 441px);
-            opacity: 1;
+            height: calc(100vh - $header-height-desktop);
         }
     }
 }
