@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext, useReducer, type PropsWithChildren } from "react";
 import type { Action, ContextProps, State } from "./type";
 
