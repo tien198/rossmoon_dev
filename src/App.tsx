@@ -7,10 +7,12 @@ import Home from "./Home/Home";
 export default function App() {
   return <>
     <Header />
+    <main>
+      <Home />
 
-    <Home />
 
-    <Footer/>
+    </main>
+    <Footer />
   </>
 }
 
