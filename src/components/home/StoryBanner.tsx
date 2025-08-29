@@ -1,12 +1,11 @@
-// import Video from "@/components/Video";
-// import Link from "next/link";
+import Video from "@/components/Video";
+import Link from "next/link";
 
-import styles from './Banner.module.scss'
-import Video from '../../components/Video';
-import { useGetBannerSources, useGetStory } from "../hooks/bannerHooks";
+import styles from './StoryBanner.module.scss'
+import { useGetStoryBannerSources, useGetStory } from "../../hooks/storyBannerHooks";
 
-export default function Banner() {
-    const bannerSources = useGetBannerSources()
+export default function StoryBanner() {
+    const bannerSources = useGetStoryBannerSources()
     const story = useGetStory()
 
     return <section
@@ -20,7 +19,7 @@ export default function Banner() {
             flex flex-col justify-between items-center gap-4 text-center">
             <div className="font-thin text-xs">{story.category}</div>
             <div className= "text-2xl md:text-3xl">{story.storyName}</div>
-            <a href='/' className='border-b border-white'>Đăng ký nhận thông báo</a>
+            <Link href='/' className='border-b border-white'>Đăng ký nhận thông báo</Link>
         </div>
     </section>
 }

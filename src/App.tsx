@@ -1,6 +1,6 @@
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header/Header";
-import Home from "./Home/Home";
+// import ProductCard from "./components/ProductCard";
 
 
 
@@ -8,9 +8,7 @@ export default function App() {
   return <>
     <Header />
     <main>
-      <Home />
-
-
+      {/* <ProductCard /> */}
     </main>
     <Footer />
   </>
