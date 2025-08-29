@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
-const MONGODB_URI = process.env.MONGODB_URI
-const NODE_ENV = process.env.NODE_ENV
+const MONGODB_URI = import.meta.env.MONGODB_URI
+const NODE_ENV = import.meta.env.NODE_ENV
 
 if (!MONGODB_URI)
     throw new Error(".env is missing 'Mongo URI' field");
@@ -16,16 +16,14 @@ declare global {
 
 switch (NODE_ENV) {
     case 'development': {
-        if (!global._mongoClient) {
+        if (!window._mongoClient) {
             client = new MongoClient(MONGODB_URI)
-            global._mongoClient = await client.connect()
+            window._mongoClient = await client.connect()
         }
         break
     }
     default: {
-        client = await new MongoClient(MONGODB_URI, {
-            minPoolSize: 2
-        }).connect()
+        client = await new MongoClient(MONGODB_URI).connect()
         break
     }
 }

@@ -1,14 +1,15 @@
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header/Header";
-// import ProductCard from "./components/ProductCard";
-
+import CollectionSection from "./components/CollectionSection";
 
 
 export default function App() {
+
+
   return <>
     <Header />
     <main>
-      {/* <ProductCard /> */}
+      <CollectionSection />
     </main>
     <Footer />
   </>
