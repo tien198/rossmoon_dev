@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react"
 import type { Product } from "../models/product.zod"
 
-import Products from '../assets/products.json'
+import Products from '../assets/db/products.json'
 import ProductCard from "./ProductCard"
 
 
 export default function CollectionSection() {
-    const [prods, setProds] = useState<Product[] | null>(null)
-    useEffect(() => {
-        setProds(Products)
-    }, [])
+    const prods = getProducts()
     return (
         <div>
             {prods?.map(prod =>
@@ -17,4 +13,9 @@ export default function CollectionSection() {
             )}
         </div>
     )
+}
+
+
+function getProducts(): Product[] {
+    return Products as Product[]
 }
