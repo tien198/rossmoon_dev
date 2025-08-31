@@ -1,6 +1,6 @@
+import HighlightCollectionsSection from "./components/home/HighlighCollectionSection";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header/Header";
-import CollectionSection from "./components/CollectionSection";
 
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
   return <>
     <Header />
     <main>
-      <CollectionSection />
+      <HighlightCollectionsSection />
     </main>
     <Footer />
   </>

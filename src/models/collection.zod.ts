@@ -15,4 +15,3 @@ export const collectionShema = z.object({
 export type Collection = z.infer<typeof collectionShema>
 
 export type CollectionPart = Partial<Collection>
-
